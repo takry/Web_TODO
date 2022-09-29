@@ -43,8 +43,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'authapp',
     'corsheaders',
+    'django_filters',
     'todoapp',
-    # 'django-filter',
+
 ]
 
 MIDDLEWARE = [
@@ -136,3 +137,12 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://127.0.0.1:8000",
 ]
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES':[
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer'
+    ],
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 100
+}
