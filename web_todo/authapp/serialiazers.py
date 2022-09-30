@@ -9,7 +9,7 @@ class UserAuthModelSerializer(ModelSerializer):
         fields = ('username', 'first_name', 'last_name', 'email',)
 
 
-class ProjectHyperlinkedModelSerializer(HyperlinkedModelSerializer):
+class ProjectHyperlinkedModelSerializer(ModelSerializer):
     class Meta:
         model = Project
         fields = '__all__'
