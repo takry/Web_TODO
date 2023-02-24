@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_filters',
     'todoapp',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'drf_yasg',
 
 ]
 
@@ -139,6 +140,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://127.0.0.1:8000",
 ]
 REST_FRAMEWORK = {
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.URLPathVersioning',
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ],

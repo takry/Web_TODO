@@ -3,7 +3,7 @@ from rest_framework import mixins, viewsets
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.viewsets import ModelViewSet
 from authapp.models import UserAuth, Project
-from authapp.serialiazers import UserAuthModelSerializer, ProjectHyperlinkedModelSerializer
+from authapp.serialiazers import UserAuthModelSerializer, ProjectHyperlinkedModelSerializer, UserAuthModelSerializerFull
 from filters import ProjectFilter
 
 
@@ -11,6 +11,11 @@ from filters import ProjectFilter
 class UserAuthCustomViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.UpdateModelMixin, viewsets.GenericViewSet):
     queryset = UserAuth.objects.all()
     serializer_class = UserAuthModelSerializer
+
+    def get_serializer_class(self):
+        if self.request.version == '0.2':
+            return UserAuthModelSerializerFull
+        return UserAuthModelSerializer
 
 
 class ProjectLimitOffsetPagination(LimitOffsetPagination):
