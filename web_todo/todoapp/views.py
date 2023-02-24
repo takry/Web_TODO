@@ -27,5 +27,5 @@ class DestroyModelMixin(DestroyModelMixin):
 class ToDoLimitOffsetPaginationViewSet(DestroyModelMixin, ModelViewSet):
     queryset = ToDo.objects.all()
     serializer_class = ToDoHyperlinkedModelSerializer
-    pagination_class = ToDoLimitOffsetPagination
+    # pagination_class = ToDoLimitOffsetPagination
     filterset_fields = ['project']
