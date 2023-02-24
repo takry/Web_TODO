@@ -18,13 +18,13 @@ from django.db import router
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from authapp.views import UserAuthModelViewSet, ProjectModelViewSet
-from todoapp.views import ToDoModelViewSet
+from authapp.views import UserAuthCustomViewSet, ProjectLimitOffsetPaginationViewSet
+from todoapp.views import ToDoLimitOffsetPaginationViewSet
 
 router = DefaultRouter()
-router.register('userauth', UserAuthModelViewSet)
-router.register('todo', ToDoModelViewSet)
-router.register('project', ProjectModelViewSet)
+router.register('userauth', UserAuthCustomViewSet)
+router.register('todo', ToDoLimitOffsetPaginationViewSet)
+router.register('project', ProjectLimitOffsetPaginationViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
